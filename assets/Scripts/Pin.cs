@@ -6,6 +6,7 @@ public class Pin : MonoBehaviour {
 
     private Transform point;
     private bool isFalled;
+	public float falledLimiter;
     public float tamMax;
     private Vector3 originalPosition;
 
@@ -15,9 +16,10 @@ public class Pin : MonoBehaviour {
 	}
 	
 	void Update () {
+		point.transform.rotation = Quaternion.identity;
         if (!isFalled)
         {
-            if (point.position.y < 1) {
+			if (point.position.y < falledLimiter) {
                 isFalled = true;
                 GameLogic.Instance.placar.AddPoint(1);
             }
@@ -27,6 +29,8 @@ public class Pin : MonoBehaviour {
         {
             gameObject.SetActive(false);
         }
+
+
     }
 
     public void Restart() {
