@@ -4,7 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour {
 
-    
+    /// <summary>
+    /// Gets the instance.
+    /// </summary>
+    /// <value>The instance.</value>
     public static GameLogic Instance
     {
         get
@@ -19,8 +22,10 @@ public class GameLogic : MonoBehaviour {
         }
     }
 
+	/// <summary>
+	/// The m instance.
+	/// </summary>
     private static GameLogic m_instance;
-
     void Awake()
     {
         if (m_instance == null)
@@ -61,6 +66,9 @@ public class GameLogic : MonoBehaviour {
     [Tooltip("Nome do Botão")]
     public string powerButtonName;
 
+	/// <summary>
+	/// Restarts the level.
+	/// </summary>
     public void restartLevel()
     {
         gameOver.SetActive(false);

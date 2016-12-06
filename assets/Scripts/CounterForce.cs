@@ -3,13 +3,17 @@ using System.Collections;
 
 public class CounterForce : MonoBehaviour {
 
-    private bool keyDown;
+
+	private bool isKeyDown;
     private float force;
     private float deltaForce;
     private int Increment;
 
     private RectTransform rTransform;
 
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
         this.force = 0;
         this.deltaForce = 0;
@@ -19,11 +23,14 @@ public class CounterForce : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	void Update () {
         if (!GameLogic.Instance.ball.IsLaunched)
         {
             if (Input.GetButtonDown(GameLogic.Instance.powerButtonName)) {
-                keyDown = true;
+                isKeyDown = true;
             }
 
             if (Input.GetButtonUp(GameLogic.Instance.powerButtonName)) {
@@ -31,12 +38,13 @@ public class CounterForce : MonoBehaviour {
                 GameLogic.Instance.cameraEffects.StartEffect();
                 GameLogic.Instance.menu.SetActive(false);
                 GameLogic.Instance.placar.gameObject.SetActive(true);
-                keyDown = false;
+                isKeyDown = false;
                 Start();
             }
         }
 
-        if (keyDown) {
+
+        if (isKeyDown) {
             if (deltaForce > 1) {
                 Increment = -1;
             }

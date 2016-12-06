@@ -10,11 +10,17 @@ public class Pin : MonoBehaviour {
     public float tamMax;
     private Vector3 originalPosition;
 
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
         point = transform.GetChild(0);
         this.originalPosition = transform.position;
 	}
-	
+
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	void Update () {
 		point.transform.rotation = Quaternion.identity;
         if (!isFalled)
@@ -33,6 +39,9 @@ public class Pin : MonoBehaviour {
 
     }
 
+	/// <summary>
+	/// Restart this instance.
+	/// </summary>
     public void Restart() {
         transform.rotation = Quaternion.identity;
         transform.position = originalPosition;
